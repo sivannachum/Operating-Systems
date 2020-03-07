@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 	  else{
 	    char *token = strtok(line, whitespace);
 	    // The user did not type valid input
-	    if (strcmp(token, "put") != 0){
+	    if (token == NULL || strcmp(token, "put") != 0){
 	      printf("I do not understand. Please try again or do Ctrl-C to quit.\n");
 	    }
 	    // The user wants to put a string into history
@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
 	      }
 	    }
 	  }
-	  
+	  free(line);
 	}
 
 	// Looping over the linked list of history, calling free on each one.
@@ -110,7 +110,8 @@ StrHashElem_t* node_create(char* str, size_t len) {
   // Use a pointer so this StrHashElem_t will survive
   // after the function returns and we can still use it
   StrHashElem_t *toReturn = malloc(sizeof(StrHashElem_t));
-  toReturn->str = str;
+  assert(toReturn != NULL);
+  toReturn->str = strdup(str);
   toReturn->len = len;
   toReturn->next = NULL;
   return toReturn;
