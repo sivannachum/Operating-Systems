@@ -352,11 +352,9 @@ def lottery_scheduler(jobs: List[Job], time_step: float = 1.0):
         alive.append(job)
         sum_tickets += job.tickets
 
-    # Most efficient to sort list of jobs from those with highest number of tickets to lowest
-    alive.sort(key=lambda j: (j.tickets, j.name), reverse=True)
-
     # Select the job to run probabalistically
     # Decide on a winner and keep a counter variable to keep track of if we've found it yet
+    # randint is probably faster..
     winner = random.uniform(0, sum_tickets)
     counter: int = 0
     
