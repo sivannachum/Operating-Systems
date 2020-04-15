@@ -100,8 +100,11 @@ class Simulation(object):
           if (block.start() > self.last_used_address):
             chosen_block = block
             break
+        # if we get through the whole fits_list and none of the block addresses were greater than the last used address,
+        # the last used address must be really big and so we should circle back to the beginning addresses in memory
         if chosen_block is None:
           chosen_block = fits_list[0]
+        # update the last used address
         self.last_used_address = chosen_block.end()
       else:
         raise ValueError("Those fits are enough for this project.")
