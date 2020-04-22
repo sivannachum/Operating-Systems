@@ -387,7 +387,7 @@ time: 0.259 seconds
 
 """
 Analysis:
-Throwing darts in Python is surprisingly faster than throwing darts in Java, in both cases.
+Throwing darts in Java on MY machine (HP Pavilion Laptop) is about as fast throwing darts in Python without numpy on GOOGLE's machine.
 Throwing darts with numpy makes the threads ridiculously fast.
 Rectangular integration is just a bit slower than numpy darts, but gives a more stable pi estimate (does not vary with runs).
 Simpson's rule takes about as long as darts without numpy but gives a better and more stable estimate. 
